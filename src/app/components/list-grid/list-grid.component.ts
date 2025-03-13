@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-list-grid',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './list-grid.component.css'
 })
 export class ListGridComponent {
+  @Output() opcionSeleccionada = new EventEmitter<'list' | 'grid'>();
+
+  seleccionar(opcion: 'list' | 'grid') {
+    this.opcionSeleccionada.emit(opcion);
+  }
 
 }

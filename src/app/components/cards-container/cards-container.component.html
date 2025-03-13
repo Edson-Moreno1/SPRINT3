@@ -1,18 +1,43 @@
-<div style="width: 60%;margin: 0 auto;">
+<!-- LIST -->
+<div style="width: 70%; margin: 0 auto;">
+  @if (displayMode == 'list') {
     <div class="card-group">
-       <div class="row">
-         @for  (p of products; track p) {
+      <div class="row">
+        @for (p of products; track p) {
+          <div class="card col-md-12 mb-3 ">
+            <img [src]="p.img" class="card-img-top" alt="{{ p.name }}">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-text">{{ p.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text text-primary">${{ p.price }}</p> <!-- Texto azul -->
+              <button class="btn btn-primary text-white ms-auto">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
 
-            <div class="card col-md-3 mb-3">
-              <img [src]="p.img" class="card-img-top" alt="...">
-                <div class="card-body">
-                 <h5 class="card-title">{{p.name}}</h5>
-                  <p class="card-text">{{p.description}}</p>
-                  <p class="card-text">${{p.price}}</p>
-                 
-                    </div>
-  </div>
-}
-  </div>
-  </div>
-</div>  
+  <!-- GRID -->
+  @if (displayMode == 'grid') {
+    <div class="card-group">
+      <div class="row">
+        @for (p of products; track p) {
+          <div class="card col-md-3 mb-3 mx-3" [ngClass]="{'card-grid': displayMode === 'grid'}">
+            <img [src]="p.img" class="card-img-top" alt="{{ p.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-text">{{ p.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+              <p class="card-text text-primary">${{ p.price }}</p> <!-- Texto azul -->
+              <button class="btn btn-primary text-white ms-auto">Agregar al carrito</button>
+            </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

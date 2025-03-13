@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { CardsContainerComponent } from "../../components/cards-container/cards-container.component";
 import { Product } from '../../models/product.models';
+import { CardsContainerComponent } from "../../components/cards-container/cards-container.component";
+import { ListGridComponent } from "../../components/list-grid/list-grid.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CardsContainerComponent],
+  imports: [ListGridComponent, CardsContainerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+
 
   products: Product[] = [
     {
@@ -83,4 +86,10 @@ export class HomeComponent {
     },
   ];
 
+
+
+  displayMode: 'list' | 'grid' = 'list';
+  setDisplayMode(mode: 'list' | 'grid'){
+    this.displayMode= mode;
+  }
 }
